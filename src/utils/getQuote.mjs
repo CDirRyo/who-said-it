@@ -31,8 +31,7 @@ export const getQuote = async(source, setAnswers) => {
     }
 
     else if (source === "Breaking Bad") {
-        await bb.get().then(response => { 
-            console.log(response);           
+        await bb.get().then(response => {           
             data.character = response.data[0].author;
             data.quote = response.data[0].quote;
         })

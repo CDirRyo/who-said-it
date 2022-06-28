@@ -1,4 +1,4 @@
-import './App.css';
+import './styles/styles.css';
 import {useState, useEffect, useRef} from 'react';
 import {getQuote} from "./utils/getQuote.mjs";
 import QuoteScreen from "./components/QuoteScreen";
@@ -6,6 +6,7 @@ import CharDropdown from './components/CharDropdown';
 import SourceDropdown from './components/SourceDropdown';
 import GuessButton from './components/GuessButton';
 import GuessCounter from './components/GuessCounter';
+import Title from './components/Title';
 
 function App() {
     const firstRenderRef = useRef(true);
@@ -56,7 +57,7 @@ function App() {
             'Olenna Tyrell',
             'Mance Rayder'
         ]};
-    const maxGuesses = 3;
+    const maxGuesses = 4;
 
     const [gotItRight, setgotItRight] = useState(
         {
@@ -68,7 +69,7 @@ function App() {
         {
             status: "playing", 
             currentGuess: 0, 
-            tracker: ["current", null, null]
+            tracker: ["current", null, null, null]
         }
     );
     const [selectedGuess, setSelectedGuess] = useState(
@@ -131,7 +132,7 @@ function App() {
             if (isRightShow && isRightCharacter) {
                 setGameInfo(prev => (
                     {
-                        ...prev,
+                        currentGuess: maxGuesses,
                         status: "won",
                         tracker: trackGuess(prev.tracker, "right"),
                     }
@@ -151,12 +152,13 @@ function App() {
                         character: true
                     }))                  
                 }
-                if (isRightShow) {
+                else if (isRightShow) {
                     setgotItRight(prev => ({
                         ...prev,
                         source: true
                     }))                    
                 }
+                else setgotItRight({source: false, character: false});  
                 setGameInfo(prev => {
                     const currentGuess = prev.currentGuess + 1;
                     const status = currentGuess === maxGuesses? "lost" : "playing";
@@ -164,16 +166,16 @@ function App() {
                     return {currentGuess, status, tracker};
                 }) 
             }          
-        }
-         
+        }         
     }
 
   return (
     <div className="App">
-        <QuoteScreen quote={answers.quote} status={gameInfo.gameStatus}/>
+        <Title />
+        <QuoteScreen character={answers.character} source={answers.source} quote={answers.quote} status={gameInfo.status}/>
         <GuessCounter tracker={gameInfo.tracker}/>   
-        <SourceDropdown gotSource={gotItRight.source} sources={sources} selectedSource={selectedGuess.source} changeSelectedSource={changeSelectedSource}/>               
-        <CharDropdown gotCharacter={gotItRight.source.character} characters={characters[selectedGuess.source]} selectedCharacter={selectedGuess.character} changeSelectedCharacter={changeSelectedCharacter}/>
+        <SourceDropdown currentGuess={gameInfo.currentGuess} gotSource={gotItRight.source} sources={sources} selectedSource={selectedGuess.source} changeSelectedSource={changeSelectedSource}/>               
+        <CharDropdown currentGuess={gameInfo.currentGuess} gotCharacter={gotItRight.character} characters={characters[selectedGuess.source]} selectedCharacter={selectedGuess.character} changeSelectedCharacter={changeSelectedCharacter}/>
         <GuessButton takeGuess={takeGuess} status={gameInfo.status}/>        
     </div>
   );

@@ -1,0 +1,139 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@600;800&display=swap");
+* {
+  box-sizing: border-box;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  color: #FAFAFA;
+}
+
+body {
+  background-color: #32303C;
+  margin: 0;
+}
+
+h1 {
+  font-weight: 800;
+  font-size: 36px;
+  margin-top: 32px;
+  margin-bottom: 48px;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.guess-tracker {
+  display: flex;
+  gap: 8px;
+}
+
+.quote-screen {
+  width: 656px;
+  height: 240px;
+  background-color: #1E1D24;
+  background-position: center;
+  box-shadow: 0px 4px 4px 2px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 100vw;
+}
+.quote-screen .quote {
+  text-align: center;
+  font-weight: 800;
+  font-size: 20px;
+  max-width: 612px;
+  margin: 0;
+  transition: all 0.2s ease-in-out;
+}
+.quote-screen .character-name {
+  text-align: center;
+  margin: 4px 0 0 0;
+  font-style: italic;
+}
+
+.guess-button {
+  background-color: #32303C;
+  border: 1px solid #FAFAFA;
+  width: 148px;
+  height: 40px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  transition: all 0.2s ease-in-out;
+}
+.guess-button:hover {
+  color: #32303C;
+  background-color: #FAFAFA;
+  cursor: pointer;
+}
+.guess-button.won-button {
+  border-color: #178F88;
+  background-color: #32303C;
+  color: #FAFAFA;
+}
+.guess-button.won-button:hover {
+  cursor: default;
+}
+.guess-button.lost-button {
+  color: #FAFAFA;
+  border-color: #AD1111;
+  background-color: #32303C;
+}
+.guess-button.lost-button:hover {
+  cursor: default;
+}
+
+.guess-tracker {
+  margin-top: 28px;
+}
+.guess-tracker .guess {
+  width: 24px;
+  height: 24px;
+  background-color: #1E1D24;
+  transition: all 0.2s ease-in-out;
+}
+.guess-tracker .guess.current-guess {
+  border: 1px solid #FAFAFA;
+}
+.guess-tracker .guess.wrong-guess {
+  background-color: #AD1111;
+}
+.guess-tracker .guess.right-guess {
+  background-color: #178F88;
+}
+
+.guess-dropdown {
+  max-width: 90vw;
+  margin-top: 20px;
+  background-color: #1E1D24;
+  width: 312px;
+  height: 40px;
+  padding-left: 16px;
+  border: none;
+  transition: all 0.2s ease-in-out;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  background-image: url("../../public/imgs/select-arrow.svg");
+  background-position: right;
+}
+.guess-dropdown option {
+  background-color: #1E1D24;
+}
+.guess-dropdown:focus-visible {
+  outline: none;
+}
+.guess-dropdown:hover {
+  cursor: pointer;
+}
+.guess-dropdown.right-source, .guess-dropdown.right-character {
+  background-color: #178F88;
+}
+.guess-dropdown.wrong-source, .guess-dropdown.wrong-character {
+  background-color: #AD1111;
+}/*# sourceMappingURL=styles.css.map */
