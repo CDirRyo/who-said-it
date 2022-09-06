@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/who-said-it/static/css/main.9b08fe41.css",
+    "main.js": "/who-said-it/static/js/main.641c69df.js",
+    "index.html": "/who-said-it/index.html",
+    "static/media/select-arrow.svg": "/who-said-it/static/media/select-arrow.47a98ce96176c6a65a47.svg",
+    "main.9b08fe41.css.map": "/who-said-it/static/css/main.9b08fe41.css.map",
+    "main.641c69df.js.map": "/who-said-it/static/js/main.641c69df.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.9b08fe41.css",
+    "static/js/main.641c69df.js"
+  ]
+}
